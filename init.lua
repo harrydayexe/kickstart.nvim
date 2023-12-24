@@ -191,7 +191,7 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'onedark'
@@ -310,6 +310,13 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- [[ My settings ]]
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.opt.incsearch = true
+vim.opt.colorcolumn = "80"
+vim.opt.wrap = false
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -325,6 +332,24 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- [[ My Keymaps ]]
+-- <Leader>pv returns to file explorer
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+
+-- Move visual block up or down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv")
+
+-- Overide normal J behaviour by keeping cursor at start of line
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Override normal n and N behaviour by keeping cursor centered
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- Paste over selected text without losing selection
+vim.keymap.set('x', '<Leader>p', '"_dP')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
