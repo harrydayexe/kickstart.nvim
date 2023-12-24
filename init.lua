@@ -573,6 +573,12 @@ require('which-key').register({
   ['<leader>'] = { name = 'VISUAL <leader>' },
   ['<leader>h'] = { 'Git [H]unk' },
 }, { mode = 'v' })
+-- register which-key VISUAL mode (not SELECT)
+require('which-key').register({
+  ['<leader>'] = { name = 'VISUAL <leader>' },
+  ['<leader>p'] = { '[P]aste without overwriting register' },
+  ['<leader>h'] = { 'Git [H]unk' },
+}, { mode = 'x' })
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
