@@ -76,6 +76,9 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- Undo Tree
+  'mbbill/undotree',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -316,6 +319,10 @@ vim.opt.relativenumber = true
 vim.opt.incsearch = true
 vim.opt.colorcolumn = "80"
 vim.opt.wrap = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
 
 -- [[ Basic Keymaps ]]
 
@@ -350,6 +357,9 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- Paste over selected text without losing selection
 vim.keymap.set('x', '<Leader>p', '"_dP')
+
+-- Undotree keymaps
+vim.keymap.set('n', '<Leader>u', vim.cmd.UndotreeToggle)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
