@@ -106,8 +106,10 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
+    config = function()
+      require'lspconfig'.sourcekit.setup{}
+    end,
   },
-
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -615,11 +617,14 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
+  gopls = {},
+  pyright = {},
+  rust_analyzer = {},
   -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  -- ["sourcekit-lsp"] = {
+  --   cmd = "/usr/bin/sourcekit-lsp",
+  -- },
 
   lua_ls = {
     Lua = {
