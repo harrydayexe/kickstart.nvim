@@ -6,6 +6,7 @@
 return {
   'neovim/nvim-lspconfig',
   config = function()
+    require 'lspconfig'.sourcekit.setup {}
     -- Switch for controlling whether you want autoformatting.
     --  Use :KickstartFormatToggle to toggle autoformatting on or off
     local format_is_enabled = true
